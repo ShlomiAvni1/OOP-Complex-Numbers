@@ -49,8 +49,10 @@ int main() {
 
     return 0;
 }
+```
 
 ## Execution Screenshot
-Below is a screenshot of the library in action, demonstrating the formatted output and calculations:
+Below is a screenshot of the library in action:
 
 ![Program Output](output_screenshot.png)
+
