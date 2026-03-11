@@ -1,4 +1,4 @@
-# Complex Numbers Library (C++ OOP)
+# OOP-Complex-Numbers
 
 This repository contains a professional C++ implementation of a **Complex Numbers** library, developed using Object-Oriented Programming (OOP) principles. The project focuses on modularity, encapsulation, and accurate mathematical representations.
 
@@ -14,37 +14,43 @@ This repository contains a professional C++ implementation of a **Complex Number
 * **Absolute Value (Magnitude)**: $r = \sqrt{re^2 + im^2}$
 * **Phase (Degrees)**: $\theta = \text{atan2}(im, re) \cdot \left(\frac{180}{\pi}\right)$
 
-## File Structure
-* `src/Complex.h`: Class definition and method prototypes.
-* `src/Complex.cpp`: Implementation of the class logic and mathematical calculations.
-* `src/main.cpp`: A comprehensive testbench demonstrating library usage and edge cases.
-
 ## Example Usage
-The following example demonstrates how to initialize numbers, perform calculations, and display results:
+The following example demonstrates how to initialize numbers, perform calculations, and display results using the library:
 
 ```cpp
 #include "Complex.h"
 #include <iostream>
 
 int main() {
-    // 1. Initialize complex numbers using parameterized constructor
-    Complex z1(3, 4);   // Represents: 3 + 4i
-    Complex z2(1, -2);  // Represents: 1 - 2i
+    // 1. Initialize complex numbers using different constructors
+    Complex z1;             // Default: 0 + 0i
+    Complex z2(7, -7);      // Parameterized: 7 - 7i
+    Complex z3(3, 4);       // Parameterized: 3 + 4i
+    Complex z2c(z2);        // Copy constructor
 
-    // 2. Display initial numbers
-    std::cout << "z1: "; z1.print();
-    std::cout << "z2: "; z2.print();
+    // 2. Perform addition and subtraction
+    Complex sum = z2.add(z3); 
+    Complex diff = z2.sub(z3);
 
-    // 3. Perform addition and subtraction
-    Complex sum = z1.add(z2); 
-    Complex diff = z1.sub(z2);
+    // 3. Display results using the custom print function
+    std::cout << "z2 + z3 = "; 
+    sum.print(); // Expected Output: 10 - 3i (with magnitude and phase)
 
-    std::cout << "\nResult of Addition: ";
-    sum.print(); // Expected Output: 4 + 2i (with magnitude and phase)
+    std::cout << "z2 - z3 = "; 
+    diff.print(); // Expected Output: 4 - 11i
 
-    // 4. Accessing properties directly
-    std::cout << "\nz1 Magnitude: " << z1.abValue() << std::endl;
+    // 4. Accessing properties and updating values
+    z1.setComplex(5, 5);
+    std::cout << "\nNew z1 values: ";
+    z1.print();
+    
+    std::cout << "z1 Magnitude: " << z1.abValue() << std::endl;
     std::cout << "z1 Phase: " << z1.phase() << " degrees" << std::endl;
 
     return 0;
 }
+
+## Execution Screenshot
+Below is a screenshot of the library in action, demonstrating the formatted output and calculations:
+
+![Program Output](output_screenshot.png)
